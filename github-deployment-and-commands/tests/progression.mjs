@@ -1,0 +1,31 @@
+import { chromium } from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const page = await browser.newPage({ viewport: { width: 640, height: 480 } });
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+// Deterministic, empty central corridor. Simulated frame timestamps speed up the full route test.
+await page.addInitScript(() => {
+  Math.random = () => .01;
+  let simulatedTime = performance.now();
+  window.requestAnimationFrame = callback => window.setTimeout(() => { simulatedTime += 40; callback(simulatedTime); }, 0);
+  window.cancelAnimationFrame = id => clearTimeout(id);
+  localStorage.setItem('oui-low', 'true');
+});
+await page.goto('http://localhost:5173');
+await page.getByRole('button', { name: 'Начать полёт', exact: true }).click();
+await page.getByRole('heading', { name: 'Новая орбита взята.' }).waitFor({ timeout: 150000 });
+const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('oui-flights')));
+assert.equal(saved.length, 1);
+assert.equal(saved[0].success, true);
+assert.equal(saved[0].distance, 5500);
+await page.locator('.pause-panel').getByRole('button', { name: 'Вернуться на станцию' }).click();
+await page.setViewportSize({ width: 1200, height: 800 });
+await page.getByRole('button', { name: 'Открыть ангар', exact: false }).click();
+await page.getByRole('button', { name: 'Выбрать корабль', exact: false }).click();
+assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('oui-ship'))), 'Спектр');
+await page.reload();
+await page.locator('.ship-card').getByRole('heading', { name: 'Спектр', exact: true }).waitFor();
+assert.equal(errors.length, 0);
+console.log(JSON.stringify({ result: 'PASS', route: saved[0], unlocked: 'Спектр', persisted: true, errors }, null, 2));
+await browser.close();
