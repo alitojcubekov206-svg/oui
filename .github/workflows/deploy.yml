@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: github-deployment-and-commands
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -28,10 +31,6 @@ jobs:
         run: npm install
       - name: Check types
         run: npx tsc --noEmit
-      - name: Package source code
-        run: |
-          mkdir -p public/downloads
-          zip -qr public/downloads/oui-source.zip src public/images .github tests README.md .gitignore index.html package.json package-lock.json tsconfig.json vite.config.ts
       - name: Build for repository path
         run: npm run build -- --base=/${{ github.event.repository.name }}/
       - name: Configure Pages
@@ -39,7 +38,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: github-deployment-and-commands/dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
