@@ -1,0 +1,68 @@
+.mobile-flight { touch-action: none; overscroll-behavior: none; user-select: none; -webkit-user-select: none; }
+.mobile-flight .flight-top { top: max(16px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); }
+.mobile-flight .flight-top .icon-button { width: 44px; height: 44px; min-width: 44px; }
+.mobile-flight .flight-score { position: absolute; top: calc(max(16px, env(safe-area-inset-top)) + 104px); left: max(24px, env(safe-area-inset-left)); display: flex; align-items: center; gap: 9px; color: #e1c09d; font: 12px var(--mono); padding: 9px 12px; border: 1px solid #64809740; border-radius: 6px; background: #081323b0; pointer-events: none; }
+.mobile-flight .flight-score small { font-size: 8px; color: #91c5b1; }
+.mobile-flight .flight-overlay { overflow-y: auto; padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); touch-action: pan-y; }
+.mobile-flight .pause-panel { max-height: 100%; overflow-y: auto; }
+.mobile-flight .result-data { flex-wrap: wrap; gap: 10px 18px; font-size: 13px; }
+.mobile-flight .touch-controls { display: none; }
+
+@media (any-pointer: coarse), (max-width: 900px) {
+  .mobile-flight .flight-top { gap: 5px; padding: 6px; }
+  .mobile-flight .flight-top h3 { font-size: 12px; margin-top: 4px; }
+  .mobile-flight .flight-top .eyebrow { font-size: 7px; letter-spacing: .5px; }
+  .mobile-flight .flight-progress { max-width: 28%; width: 160px; }
+  .mobile-flight .flight-progress > span { font-size: 0; margin-bottom: 8px; }
+  .mobile-flight .flight-progress b { font-size: 11px; }
+  .mobile-flight .flight-score { top: calc(max(16px, env(safe-area-inset-top)) + 70px); left: max(18px, env(safe-area-inset-left)); font-size: 11px; }
+  .mobile-flight .flight-hints { display: none; }
+  .mobile-flight .touch-controls { display: flex; position: absolute; left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); align-items: flex-end; justify-content: space-between; gap: 12px; pointer-events: none; }
+  .mobile-flight .touch-controls .flight-dpad { display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px); gap: 5px; }
+  .mobile-flight .touch-controls button { pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid #9cbed764; border-radius: 12px; background: #17304bcb; color: #e1effb; backdrop-filter: blur(5px); touch-action: none; -webkit-touch-callout: none; user-select: none; }
+  .mobile-flight .touch-controls button:active { background: #43627dde; border-color: #c5e3f5; transform: scale(.96); }
+  .mobile-flight .dpad-up { grid-column: 2; grid-row: 1; }
+  .mobile-flight .dpad-left { grid-column: 1; grid-row: 2; }
+  .mobile-flight .dpad-down { grid-column: 2; grid-row: 2; }
+  .mobile-flight .dpad-right { grid-column: 3; grid-row: 2; }
+  .mobile-flight .touch-controls .flight-actions { display: flex; flex-direction: row; gap: 10px; align-items: flex-end; }
+  .mobile-flight .touch-controls .flight-actions button { flex-direction: column; gap: 5px; width: 56px; height: 62px; }
+  .mobile-flight .touch-controls .flight-actions span { font: 8px var(--mono); letter-spacing: .5px; }
+  .mobile-flight .touch-controls .flight-actions .fire-button { width: 72px; height: 78px; border-radius: 22px; background: #92522bd9; border-color: #f2a475; color: #fff0df; }
+  .mobile-flight .touch-controls .flight-actions .fire-button:active { background: #c16d37ed; }
+  .mobile-flight .flight-bottom { left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); bottom: calc(max(20px, env(safe-area-inset-bottom)) + 133px); }
+  .mobile-flight .flight-stat { grid-template-columns: 15px 65px; gap: 7px; }
+  .mobile-flight .flight-stat > svg { width: 15px; }
+  .mobile-flight .flight-stat > span { font-size: 7px; letter-spacing: 1px; }
+  .mobile-flight .flight-stat b { font-size: 24px; margin-top: 4px; }
+  .mobile-flight .flight-stat b small { font-size: 10px; }
+  .mobile-flight .speed > b { font-size: 36px; letter-spacing: -2px; }
+  .mobile-flight .speed > span { font-size: 7px; }
+}
+
+@media (max-width: 370px) {
+  .mobile-flight .touch-controls { left: 9px; right: 9px; gap: 7px; }
+  .mobile-flight .touch-controls .flight-actions { gap: 6px; }
+  .mobile-flight .touch-controls .flight-actions .fire-button { width: 65px; }
+  .mobile-flight .flight-top { left: 8px; right: 8px; }
+  .mobile-flight .flight-top h3 { font-size: 10px; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .mobile-flight .flight-top { top: max(7px, env(safe-area-inset-top)); padding: 3px 7px; }
+  .mobile-flight .flight-score { top: calc(max(7px, env(safe-area-inset-top)) + 61px); padding: 5px 9px; }
+  .mobile-flight .touch-controls { bottom: max(12px, env(safe-area-inset-bottom)); }
+  .mobile-flight .flight-bottom { left: 37%; right: 37%; bottom: max(20px, env(safe-area-inset-bottom)); gap: 15px; align-items: center; }
+  .mobile-flight .flight-stat { grid-template-columns: 12px 40px; gap: 4px; }
+  .mobile-flight .flight-stat > span { font-size: 6px; }
+  .mobile-flight .flight-stat b { font-size: 16px; }
+  .mobile-flight .speed { display: none; }
+  .mobile-flight .pause-panel { padding: 19px 24px; width: 460px; }
+  .mobile-flight .pause-panel h2 { font-size: 22px; margin: 10px 0; }
+  .mobile-flight .pause-panel p { margin-bottom: 12px; }
+  .mobile-flight .result-symbol { margin-bottom: 10px; }
+  .mobile-flight .result-data { margin: 12px 0; }
+}
+
+.mobile-flight .flight-score { padding: 0 6px 0 12px; min-height: 44px; }
+.mobile-flight .flight-camera { pointer-events: auto; width: 44px; height: 44px; color: #c5dced; }

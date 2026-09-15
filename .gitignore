@@ -1,0 +1,12 @@
+**/node_modules/
+**/dist/
+**/test-results/
+**/.gradle/
+**/build/
+**/local.properties
+**/*.jks
+**/*.keystore
+**/keystore.properties
+.env
+.env.*
+!.env.example

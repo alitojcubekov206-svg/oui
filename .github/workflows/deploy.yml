@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: github-deployment-and-commands
@@ -28,11 +29,23 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Check types
-        run: npx tsc --noEmit
+        run: npm run typecheck
       - name: Build for repository path
         run: npm run build -- --base=/${{ github.event.repository.name }}/
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+      - name: Verify mobile controls and all eight stages
+        run: npm test
+      - name: Upload browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oui-browser-checks
+          path: github-deployment-and-commands/test-results
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact

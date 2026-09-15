@@ -1,11 +1,13 @@
 {
-  "name": "react-vite-tailwind",
+  "name": "oui",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/run.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

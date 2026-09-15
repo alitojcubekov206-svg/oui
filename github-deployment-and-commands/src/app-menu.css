@@ -1,0 +1,101 @@
+body { min-width: 320px; }
+.sidebar { overflow-y: auto; padding-top: max(30px, env(safe-area-inset-top)); }
+.sidebar-bottom { padding-top: 28px; }
+.logo-caption { font-size: 6px; letter-spacing: .8px; }
+.privacy-link { margin: 24px 0; font-size: 11px; }
+.topbar { min-height: 74px; padding-top: env(safe-area-inset-top); }
+.topbar .icon-button, .topbar .mobile-menu { min-width: 44px; min-height: 44px; }
+.launch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.current-ship, .campaign-card { padding: 25px; overflow: hidden; }
+.current-ship .fleet-art { height: 210px; width: 100%; }
+.current-ship h3 { font-size: 24px; }
+.current-ship p, .campaign-card p { font-size: 13px; line-height: 1.8; color: #9caabb; margin: 10px 0 20px; }
+.current-ship .secondary, .campaign-card .primary { width: 100%; min-height: 48px; }
+.campaign-card { background: radial-gradient(ellipse at 100% 0, #4a30453d, transparent 70%), var(--panel); display: flex; flex-direction: column; }
+.campaign-card h2 { font-family: var(--mono); font-size: 72px; color: #eee5df; margin: 24px 0 14px; letter-spacing: -5px; }
+.campaign-card h2 small { font-size: 27px; color: #7f8795; letter-spacing: -1px; }
+.campaign-dots { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+.campaign-dots span { display: flex; align-items: center; justify-content: center; width: 34px; height: 39px; background: #1d2532; border: 1px solid #354255; border-radius: 7px; color: #4e5c71; }
+.campaign-dots .earned { background: #4a2f23; border-color: #a86743; color: #ffb07d; }
+.campaign-card .primary { margin-top: auto; }
+.fleet-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fleet-grid .hangar-ship { display: flex; flex-direction: column; padding: 22px; min-width: 0; }
+.fleet-grid .hangar-ship h2 { font-size: 25px; }
+.fleet-grid .hangar-ship p { min-height: 70px; font-size: 12px; line-height: 1.8; }
+.fleet-grid .hangar-ship .ship-art { height: 200px; width: 100%; }
+.fleet-grid .ship-specs { grid-template-columns: 1fr; gap: 14px; }
+.fleet-grid .hangar-ship > button { margin-top: auto; min-height: 48px; font-size: 12px; }
+.fleet-grid .card-heading > span:first-child { font-size: 8px; line-height: 1.8; }
+.mission-list { display: grid; gap: 18px; }
+.stage-card { display: flex; gap: 26px; padding: 28px; align-items: center; }
+.stage-number { font: 40px var(--mono); color: #bb8b6d; }
+.stage-copy { flex: 1; }
+.stage-copy h2 { margin: 9px 0; font-size: 23px; }
+.stage-copy > p { font-size: 13px; line-height: 1.8; color: #9caabb; max-width: 580px; }
+.stage-copy .mission-facts { margin: 16px 0 0; flex-wrap: wrap; gap: 14px; font-size: 12px; }
+.stage-card > button { flex-shrink: 0; min-height: 48px; }
+.stage-locked { background: #111721; }
+.stage-locked .stage-number { color: #4d5c70; }
+.help-panel { padding: 32px; max-width: 900px; }
+.help-panel h2 { font-size: 27px; margin: 12px 0 20px; }
+.help-panel h3 { font-size: 19px; margin: 28px 0 12px; }
+.help-panel > p { color: #abb8c8; font-size: 14px; line-height: 1.9; margin: 20px 0; }
+.full-control b { font-size: 13px; }
+.full-control small { font-size: 12px; line-height: 1.8; }
+.settings-panel { max-width: 900px; }
+.setting-row b { font-size: 14px; }
+.setting-row small { font-size: 12px; max-width: 450px; }
+.setting-row .toggle { min-height: 30px; width: 48px; padding: 7px; }
+.setting-row .toggle.on i { transform: translateX(18px); }
+.setting-row .secondary { min-height: 44px; }
+.mobile-dock { display: none; }
+.modal-action { margin-top: 24px; }
+.reset-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.storage-notice { padding: 15px; border: 1px solid #b8784d; background: #462b23; color: #ffcfb7; font-size: 13px; margin-bottom: 20px; }
+.main-footer button { font-size: 11px; min-height: 44px; color: #a6b0bd; }
+.empty-state > svg { margin: 0 auto 20px; color: #f39d6e; }
+@media (max-width: 1250px) { .fleet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stage-card { flex-wrap: wrap; } .stage-card > button { margin-left: 74px; } }
+@media (max-width: 720px) {
+  main { padding-bottom: 92px; }
+  .sidebar { padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  .topbar { padding-left: max(15px, env(safe-area-inset-left)); padding-right: max(15px, env(safe-area-inset-right)); }
+  .breadcrumbs > b { font-size: 10px; letter-spacing: .2px; }
+  .page-heading h1 { font-size: 27px; }
+  .page-heading p { font-size: 12px; line-height: 1.8; }
+  .hero { height: 442px; }
+  .hero h2 { font-size: 46px; }
+  .hero-content > p { font-size: 12px; }
+  .hero-note { font-size: 10px; }
+  .hero-control { min-height: 48px; font-size: 11px; }
+  .hero .primary { font-size: 12px; min-height: 48px; }
+  .hero-bottom > div > span { font-size: 7px; }
+  .hero-bottom > div > b { font-size: 11px; }
+  .launch-grid { grid-template-columns: 1fr; gap: 16px; }
+  .current-ship, .campaign-card { padding: 23px; }
+  .campaign-card h2 { font-size: 62px; margin-top: 15px; }
+  .fleet-grid { grid-template-columns: 1fr; gap: 18px; }
+  .fleet-grid .hangar-ship p { min-height: 0; }
+  .fleet-grid .hangar-ship .ship-art { height: 230px; }
+  .fleet-grid .ship-specs { margin-bottom: 24px; }
+  .stage-card { padding: 22px; gap: 15px; }
+  .stage-number { font-size: 30px; align-self: flex-start; margin-top: 12px; }
+  .stage-copy { min-width: 180px; }
+  .stage-copy h2 { font-size: 20px; }
+  .stage-copy > p { font-size: 12px; }
+  .stage-card > button { margin: 0; width: 100%; }
+  .help-panel { padding: 23px; }
+  .full-control { grid-template-columns: 88px 1fr; gap: 12px; }
+  .full-control > div { flex-wrap: wrap; }
+  .full-control b { font-size: 12px; }
+  .full-control small { font-size: 11px; }
+  .setting-row b { font-size: 12px; }
+  .setting-row small { font-size: 11px; }
+  .setting-row > div { gap: 9px; }
+  .setting-row .secondary { font-size: 11px; padding: 9px; }
+  .mobile-dock { position: fixed; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #101722f5; backdrop-filter: blur(16px); border-top: 1px solid #344051; z-index: 45; padding: 7px max(8px, env(safe-area-inset-right)) max(9px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+  .mobile-dock button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 54px; color: #8797ac; font-size: 10px; border-radius: 8px; }
+  .mobile-dock button.active { color: #ffab75; background: #3d2b225e; }
+  .toast { bottom: 90px; }
+  .main-footer { gap: 10px; flex-wrap: wrap; }
+}
+@media (max-width: 360px) { .hero h2 { font-size: 40px; } .hero-content { padding: 25px 18px; } .hero-buttons { gap: 8px; } .hero .primary { min-width: 150px; } .hero-control { font-size: 10px; } .hero-bottom { padding: 18px; gap: 10px; } .stage-copy { min-width: 160px; } }
